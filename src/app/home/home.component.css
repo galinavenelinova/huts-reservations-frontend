@@ -1,0 +1,78 @@
+main {
+  background-color: #F4F6F3;
+}
+
+.main-heading {
+  margin: 0 200px;
+}
+
+.main-heading h1 {
+  text-align: center;
+  color: white;
+  background-color: #5C7393;
+  padding: 10px 0;
+  margin: 0;
+  font-weight: lighter;
+  letter-spacing: 1px;
+}
+
+.main-heading img {
+  min-width: 100%;
+  border-bottom-right-radius: 15px;
+  border-bottom-left-radius: 15px;
+}
+
+.mountain-cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: 30px 200px 0 200px;
+}
+
+.mountain-card {
+  max-width: 48%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-bottom: 30px;
+  background-color: white;
+  border-radius: 15px;
+  box-shadow: 0px 0px 13px 1px rgba(0,0,0,0.75);
+}
+
+.mountain-card img {
+  max-width: 100%;
+  min-height: 300px;
+  object-fit: cover;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+}
+
+.mountain-card h3 {
+  text-align: center;
+  font-size: 24px;
+  color: #6E8783;
+  letter-spacing: 1px;
+}
+
+.mountain-card p {
+  padding: 0 10px;
+  text-align: justify;
+  color: #6E8783;
+}
+
+.card-btn {
+  align-self: center;
+  margin-bottom: 20px;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  background-color: #70A18F;
+  letter-spacing: 1px;
+  padding: 7px 30px;
+  border-radius: 15px;
+  cursor: pointer;
+  outline: none;
+  border: none;
+  box-shadow: 0px 0px 13px -5px rgba(0,0,0,0.75);
+}

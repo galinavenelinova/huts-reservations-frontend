@@ -1,0 +1,19 @@
+<div class="main">
+  <section class="main-heading">
+    <h1>Хижи в {{mountainName}}</h1>
+  </section>
+  <section *ngFor="let hut of hutList">
+    <article class="hut-card">
+      <div class="hut-img-wrapper">
+        <img src="./assets/images/huts/{{mountainId}}-{{hut.id}}.jpg">
+      </div>
+      <div class="hut-content-wrapper">
+        <h3>{{hut.name}}</h3>
+        <p>{{hut.shortInfo}}</p>
+        <button class="hut-card-btn" href="#">Детайли</button>
+        <button class="hut-card-btn" href="#">Резервирай</button>
+      </div>
+    </article>
+  </section>
+</div>
+

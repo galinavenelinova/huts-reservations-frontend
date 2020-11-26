@@ -1,0 +1,15 @@
+<main>
+  <section class="main-heading">
+    <h1>Преоткрий красотата на българските планини</h1>
+    <img src="./assets/images/home.jpg">
+  </section>
+  <section class="mountain-cards-container">
+    <article class="mountain-card" *ngFor="let mountain of mountainList">
+      <img src="./assets/images/mountains/{{mountain.id}}.jpg">
+      <h3>{{mountain.name}}</h3>
+      <p>{{mountain.info}}</p>
+      <button class="card-btn" routerLink="/{{mountain.id}}/huts">Хижи в {{mountain.name}}</button>
+    </article>
+  </section>
+</main>
+
