@@ -1,0 +1,101 @@
+main {
+  padding: 0 150px;
+  background-color: #F4F6F3;
+}
+
+.availability-form {
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+h1 {
+  text-align: center;
+  color: white;
+  letter-spacing: 1px;
+  font-weight: lighter;
+  font-size: 24px;
+  width: 100%;
+  background-color: #70A18F;
+  margin: 0;
+  padding: 10px 0;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+}
+
+.img-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 55vh;
+}
+
+.img-wrapper img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  border-bottom-right-radius: 15px;
+  border-bottom-left-radius: 15px;
+}
+
+input[type="number"] {
+  width: 120px;
+}
+
+form {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 20px;
+}
+
+form div {
+  width: 20%;
+  display: flex;
+  flex-direction: column;
+  padding: 15px 25px;
+  margin: 0 0 0 15px;
+  background-color: #70A18F;
+  border-radius: 5px;
+  box-shadow: 0px 0px 13px -5px rgba(0,0,0,0.75);
+}
+
+label {
+  font-size: 14px;
+  text-transform: uppercase;
+  font-weight: bold;
+  color: white;
+  padding-bottom: 10px;
+}
+
+button {
+  text-transform: uppercase;
+  font-weight: 900;
+  color: #344B48;
+  background-color: #F9F871;
+  border-radius: 5px;
+  letter-spacing: 1px;
+  cursor: pointer;
+  outline: none;
+  border: none;
+  margin: 0 0 0 15px;
+  box-shadow: 0px 0px 13px -5px rgba(0,0,0,0.75);
+}
+
+.message {
+  display: flex;
+  padding-bottom: 30px;
+}
+
+.message-yes {
+  font-weight: bold;
+  color: green;
+}
+
+.message-no {
+  font-weight: bold;
+  color: red;
+}
+
+.message-btn {
+  padding: 4px 30px;
+  border-radius: 15px;
+}

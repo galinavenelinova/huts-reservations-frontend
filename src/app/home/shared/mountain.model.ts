@@ -1,4 +1,4 @@
-import {IHut} from './hut';
+import {IHut} from '../../huts/shared/hut.model';
 
 export interface IMountain {
   id: string;

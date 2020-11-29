@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {environment} from '../environments/environment';
-import {IMountain} from './interfaces/mountain';
+import {environment} from '../../../environments/environment';
+import {IMountain} from './mountain.model';
 
 const apiUrl = environment.apiUrl;
 

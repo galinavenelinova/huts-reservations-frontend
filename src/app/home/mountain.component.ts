@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import {IMountain} from '../interfaces/mountain';
-import {MountainService} from '../mountain.service';
+import {IMountain} from './shared/mountain.model';
+import {MountainService} from './shared/mountain.service';
 import {RouterLink} from '@angular/router';
 
 @Component({
   selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  templateUrl: './mountain.component.html',
+  styleUrls: ['./mountain.component.css']
 })
-export class HomeComponent implements OnInit {
+export class MountainComponent implements OnInit {
   mountainList: IMountain[];
   routerLink: RouterLink;
 

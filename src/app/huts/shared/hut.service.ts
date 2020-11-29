@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {IMountain} from './interfaces/mountain';
-import {IHut} from './interfaces/hut';
-import {environment} from '../environments/environment';
+import {IHut} from './hut.model';
+import {environment} from '../../../environments/environment';
 import {Observable} from 'rxjs';
 
 const apiUrl = environment.apiUrl;
@@ -14,5 +13,9 @@ export class HutService {
 
   loadHutList(mountainId: string): Observable<IHut[]> {
     return this.http.get<IHut[]>(`${apiUrl}/${mountainId}/huts`);
+  }
+
+  getHutById(hutId: string): Observable<IHut> {
+    return this.http.get<IHut>(`${apiUrl}/huts/${hutId}`);
   }
 }

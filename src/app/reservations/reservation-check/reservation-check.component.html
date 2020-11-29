@@ -1,0 +1,36 @@
+<main>
+  <section class="availability-form">
+    <div class="img-wrapper">
+      <h1>Хижа Мазалат</h1>
+      <img src="/assets/images/huts/{{hutId}}.jpg">
+    </div>
+    <form #reservationCheckForm="ngForm" (ngSubmit)="reservationCheckHandler(reservationCheckForm.value)">
+      <div class="form-group">
+        <label for="checkin-date">Дата на пристигане</label>
+        <input #checkinDateInput="ngModel" type="date" name="checkinDate" id="checkin-date" ngModel required>
+      </div>
+      <div class="form-group">
+        <label for="checkout-date">Дата на напускане</label>
+        <input #checkoutDateInput="ngModel" type="date" name="checkoutDate" id="checkout-date" ngModel required>
+      </div>
+      <div class="form-group">
+        <label for="people-count">Брой хора</label>
+        <input #peopleCountInput="ngModel" type="number" name="peopleCount" value="1" step="1" min="1" id="people-count" [ngModel]="1">
+      </div>
+      <button [disabled]="reservationCheckForm.invalid">ПРОВЕРИ НАЛИЧНОСТ</button>
+    </form>
+    <article class="message" *ngIf="isAvailable !== undefined && isAvailable">
+      <div class="message-yes">
+        Има свободни места за {{reservationCheck.checkinDate}} - {{reservationCheck.checkoutDate}}/{{reservationCheck.peopleCount}} човека. Продължавате ли към резервация?
+      </div>
+      <button class="message-btn" routerLink="/reservation">ДА</button>
+    </article>
+    <article class="message" *ngIf="isAvailable !== undefined && !isAvailable">
+      <div class="message-no">
+        За съжаление няма свободни места за {{reservationCheck.checkinDate}} - {{reservationCheck.checkoutDate}}/{{reservationCheck.peopleCount}} човека. Моля променете датите/броя хора и опитайте пак.
+      </div>
+    </article>
+  </section>
+</main>
+
+

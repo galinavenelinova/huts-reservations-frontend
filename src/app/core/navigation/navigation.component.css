@@ -1,0 +1,48 @@
+@import "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css";
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #6E8783;
+  padding: 0 150px;
+}
+
+nav section {
+  height: 50px;
+  display: flex;
+  align-items: center;
+}
+
+.left img {
+  height: 100%;
+  outline: none;
+  border:none;
+}
+
+.left img:hover {
+  cursor: pointer;
+}
+
+.right button {
+  background: #C2FCF3;
+  color: #344B48;
+  padding: 5px 20px;
+  border-radius: 15px;
+  outline: none;
+  border:none;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: bold;
+}
+
+.right button:hover {
+  background: #344B48;
+  color: #C2FCF3;
+  cursor: pointer;
+}
+
+.right i {
+  color: #C2FCF3;
+  margin: 0 15px;
+}

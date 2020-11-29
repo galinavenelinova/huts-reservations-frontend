@@ -1,14 +1,14 @@
 import {Component, OnInit} from '@angular/core';
-import {Router, ActivatedRoute, ParamMap} from '@angular/router';
-import {HutService} from '../hut.service';
-import {IHut} from '../interfaces/hut';
+import {ActivatedRoute} from '@angular/router';
+import {HutService} from '../shared/hut.service';
+import {IHut} from '../shared/hut.model';
 
 @Component({
   selector: 'app-hut',
-  templateUrl: './hut.component.html',
-  styleUrls: ['./hut.component.css']
+  templateUrl: './hut-list.component.html',
+  styleUrls: ['./hut-list.component.css']
 })
-export class HutComponent implements OnInit {
+export class HutListComponent implements OnInit {
   mountainId: string;
   mountainName: string;
   hutList: IHut[];

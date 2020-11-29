@@ -1,0 +1,52 @@
+<div *ngIf="!hut">Loading...</div>
+<main *ngIf="hut">
+  <section>
+    <article class="hut-details">
+      <h1>{{hut.name}}</h1>
+      <div class="img-wrapper">
+        <img src="assets/images/huts/{{hut.id}}.jpg">
+      </div>
+      <p class="hut-description">{{hut.shortInfo}}</p>
+      <p class="hut-description">{{hut.longInfo}}</p>
+      <!--      <ul>-->
+      <!--        Съседни туристически обекти:-->
+      <!--        <li>х.Узана - 3.30ч.</li>-->
+      <!--        <li>х.Тъжа - 3.30ч.</li>-->
+      <!--        <li>х.Мандрата - 3.30ч.</li>-->
+      <!--        <li>х.Соколна - 4.30ч.</li>-->
+      <!--        <li>заслон Голям Кадемлия - 3.00ч.</li>-->
+      <!--        Всички пътеки са маркирани.-->
+      <!--      </ul>-->
+      <!--      <ol class="hut-start-points">Изходни места:-->
+      <!--        <li>с.Стоките - м.Лъгът - 3.00ч.</li>-->
+      <!--        <li>с.Скобелево - 4.30ч.</li>-->
+      <!--      </ol>-->
+      <!--      <table>-->
+      <!--        <tr>-->
+      <!--          <td>Спални места</td>-->
+      <!--          <td>64</td>-->
+      <!--        </tr>-->
+      <!--        <tr>-->
+      <!--          <td>Телефон</td>-->
+      <!--          <td>024910020</td>-->
+      <!--        </tr>-->
+      <!--        <tr>-->
+      <!--          <td>Надморска височина (метри)</td>-->
+      <!--          <td>1620</td>-->
+      <!--        </tr>-->
+      <!--        <tr>-->
+      <!--          <td>GPS Северна ширина (градуси)</td>-->
+      <!--          <td>42.75857</td>-->
+      <!--        </tr>-->
+      <!--        <tr>-->
+      <!--          <td>GPS Източна дължина (градуси)</td>-->
+      <!--          <td>25.11479</td>-->
+      <!--        </tr>-->
+      <!--      </table>-->
+      <div class="btn-wrapper">
+        <button routerLink="/{{hut.mountain.id}}/huts">&lt; Назад</button>
+        <button routerLink="/huts/{{hut.id}}/check">Резервирай</button>
+      </div>
+    </article>
+  </section>
+</main>
