@@ -28,6 +28,7 @@ nav section {
   background: #C2FCF3;
   color: #344B48;
   padding: 5px 20px;
+  margin-left: 20px;
   border-radius: 15px;
   outline: none;
   border:none;
@@ -44,5 +45,4 @@ nav section {
 
 .right i {
   color: #C2FCF3;
-  margin: 0 15px;
 }

@@ -3,6 +3,8 @@ import {ReservationService} from '../shared/reservation.service';
 import {NgForm} from '@angular/forms';
 import {IReservation} from '../shared/reservation.model';
 import {IUser} from '../../user/shared/user.model';
+import {UserService} from '../../user/user.service';
+import {tap} from 'rxjs/operators';
 
 @Component({
   selector: 'app-reservation',
@@ -11,14 +13,14 @@ import {IUser} from '../../user/shared/user.model';
 })
 export class ReservationComponent implements OnInit {
   reservationDetails: any;
-  user: IUser = {email: '', firstName: '', lastName: '', phone: '', reservations: []};
-  reservation: IReservation = {checkinDate: undefined, checkoutDate: undefined, peopleCount: 0, user: this.user};
+  currentUser: IUser;
+  reservation: IReservation = {checkinDate: undefined, checkoutDate: undefined, peopleCount: 0, user: null};
   @ViewChild('reservationForm') form: NgForm;
-  constructor(private reservationService: ReservationService) { }
+  constructor(private reservationService: ReservationService, private userService: UserService) { }
 
   ngOnInit(): void {
     this.reservationDetails = this.reservationService.reservationDetails;
-    console.log(this.reservationDetails);
+    this.currentUser = this.userService.currentUser;
   }
 
   reservationHandler(value: any): void {

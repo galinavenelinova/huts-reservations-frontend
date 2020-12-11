@@ -10,10 +10,9 @@ import { UserService } from '../user.service';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-
   form: FormGroup;
-
   isLoading = false;
+  userRegisteredSuccessful = true;
 
   constructor(
     private fb: FormBuilder,
@@ -24,7 +23,8 @@ export class RegisterComponent implements OnInit {
     this.form = this.fb.group({
       username: ['', [Validators.required, Validators.minLength(5)]],
       email: ['', [Validators.required, emailValidator]],
-      tel: [''],
+      names: ['', [Validators.required]],
+      tel: ['', [Validators.required]],
       password: passwordControl,
       rePassword: ['', [Validators.required, Validators.minLength(5), rePasswordValidatorFactory(passwordControl)]]
     });
@@ -44,7 +44,7 @@ export class RegisterComponent implements OnInit {
       },
       error: (err) => {
         this.isLoading = false;
-        console.error(err);
+        this.userRegisteredSuccessful = false;
       }
     });
   }

@@ -8,7 +8,6 @@ import { UserService } from '../user.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-
   isLoading = false;
   errorMessage = '';
 
@@ -34,5 +33,4 @@ export class LoginComponent implements OnInit {
       }
     });
   }
-
 }

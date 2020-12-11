@@ -62,10 +62,18 @@
   padding: 0.17em 0;
 }
 
+.edit-button {
+  color: white;
+  background: #344B48;
+  margin: 20px 20px;
+}
+
 .red-button {
   background-color: red;
+  margin: 20px 20px;
 }
 
 .green-button {
   background-color: green;
+  margin: 20px 20px;
 }

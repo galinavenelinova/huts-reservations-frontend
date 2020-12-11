@@ -1,9 +1,9 @@
 import {IReservation} from '../../reservations/shared/reservation.model';
 
 export interface IUser {
-  firstName: string;
-  lastName: string;
-  phone: string;
+  username: string;
   email: string;
+  tel: string;
+  names: string;
   reservations: IReservation[];
 }

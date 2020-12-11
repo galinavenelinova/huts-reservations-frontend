@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { catchError, tap } from 'rxjs/operators';
 import {IUser} from './shared/user.model';
@@ -17,8 +17,10 @@ export class UserService {
   constructor(private http: HttpClient) { }
 
   getCurrentUserProfile(): Observable<any> {
-    return this.http.get(`${apiUrl}/users/profile`, { withCredentials: true }).pipe(
-      tap(((user: IUser) => this.currentUser = user)),
+    console.log('getCurrentUserProfile: ' + this.isLogged);
+    return this.http.get(`${apiUrl}/users/profile`, { withCredentials: true, headers: {'Content-Type': 'application/json'}}, )
+      .pipe(
+      tap(user => console.log(user)),
       catchError(() => { this.currentUser = null; return of(null); })
     );
   }
@@ -30,6 +32,7 @@ export class UserService {
   }
 
   register(data: any): Observable<any> {
+    console.log(data);
     return this.http.post(`${apiUrl}/users/register`, data, { withCredentials: true }).pipe(
       tap((user: IUser) => this.currentUser = user)
     );

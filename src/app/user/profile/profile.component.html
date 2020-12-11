@@ -1,45 +1,53 @@
 <ng-template #defaultMode>
   <div class="flex">
-    <p>Username: </p>
-    <p>{{currentUser.username}}</p>
+    <p>Потребителско име: </p>
+    <p>{{currentUser?.username}}</p>
   </div>
   <div class="flex">
     <p>Email: </p>
-    <p>{{currentUser.email}}</p>
+    <p>{{currentUser?.email}}</p>
   </div>
   <div class="flex">
-    <p>Phone: </p>
-    <p>+359 {{currentUser.tel}}</p>
+    <p>Име Фамилия: </p>
+    <p>{{currentUser?.names}}</p>
   </div>
-  <button class="edit-button" (click)="toggleEditMode()">Edit</button>
+  <div class="flex">
+    <p>Телефон: </p>
+    <p>+359 {{currentUser?.tel}}</p>
+  </div>
+  <button class="edit-button" (click)="toggleEditMode()">Редактирай</button>
 </ng-template>
 
 <ng-template #editMode>
   <form #f="ngForm" (ngSubmit)="submitHandler(f.value)">
     <div class="flex">
-      <p>Username: </p>
-      <input type="text" name="username" id="username" [ngModel]="currentUser.username">
+      <p>Потребителско име: </p>
+      <input type="text" name="username" id="username" [ngModel]="currentUser?.username">
     </div>
     <div class="flex">
       <p>Email: </p>
-      <input type="email" name="email" id="email" [ngModel]="currentUser.email">
+      <input type="email" name="email" id="email" [ngModel]="currentUser?.email">
     </div>
     <div class="flex">
-      <p>Phone: </p>
+      <p>Име Фамилия: </p>
+      <input type="text" name="names" id="names" [ngModel]="currentUser?.names">
+    </div>
+    <div class="flex">
+      <p>Телефон: </p>
       <div>
         <select name="select-tel" id="select-tel" class="tel">
           <option value="00359">+359</option>
         </select>
-        <input type="text" name="tel" id="tel" value="885 888 888" [ngModel]="currentUser.tel">
+        <input type="text" name="tel" id="tel" value="885 888 888" [ngModel]="currentUser?.tel">
       </div>
     </div>
-    <button type="button" class="red-button" (click)="toggleEditMode()">Cancel</button>
-    <button class="green-button">Save</button>
+    <button type="button" class="red-button" (click)="toggleEditMode()">Откажи</button>
+    <button class="green-button">Потвърди</button>
   </form>
 </ng-template>
 
 <div class="profile">
-  <img src="/assets/profile.png" alt="default user">
-  <h3>User Info:</h3>
+  <img src="/assets/images/profile.png" alt="default user">
+  <h3>Профилна информация:</h3>
   <ng-container *ngTemplateOutlet="inEditMode ? editMode : defaultMode"></ng-container>
 </div>

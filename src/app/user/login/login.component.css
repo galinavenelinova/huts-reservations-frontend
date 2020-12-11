@@ -32,14 +32,16 @@ input:not(.input-error) {
   border-top: 1px solid;
   border-bottom: 1px solid;
   padding: 0.3em;
-
   border-top-right-radius: 0.3em;
   border-bottom-right-radius: 0.3em;
 }
 
-
 .login select, .register select {
   border-color: black;
+}
+
+button:hover {
+  cursor: pointer;
 }
 
 .login button, .register button {

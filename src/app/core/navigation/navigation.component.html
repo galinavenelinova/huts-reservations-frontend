@@ -4,6 +4,8 @@
   </section>
   <section class="right">
     <i class="fas fa-user"></i>
-    <button routerLink="/user/login">Вход</button>
+    <button *ngIf="!isLogged" routerLink="/user/login">Вход</button>
+    <button *ngIf="isLogged" routerLink="/user/profile">Профил</button>
+    <button *ngIf="isLogged" (click)="logoutHandler()">Изход</button>
   </section>
 </nav>

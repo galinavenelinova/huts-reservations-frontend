@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { UserService } from '../user.service';
+import {Component, OnInit} from '@angular/core';
+import {UserService} from '../user.service';
 import {IUser} from '../shared/user.model';
+import {Observable} from 'rxjs';
 
 @Component({
   selector: 'app-profile',
@@ -10,14 +11,17 @@ import {IUser} from '../shared/user.model';
 export class ProfileComponent implements OnInit {
 
   inEditMode = false;
+  currentUser: IUser;
 
-  get currentUser(): IUser {
-    return this.userService.currentUser;
+  constructor(private userService: UserService) {
   }
 
-  constructor(private userService: UserService) { }
-
   ngOnInit(): void {
+    this.userService.getCurrentUserProfile().subscribe(
+      userDetails => {
+        this.currentUser = userDetails;
+      }
+    );
   }
 
   toggleEditMode(): void {
