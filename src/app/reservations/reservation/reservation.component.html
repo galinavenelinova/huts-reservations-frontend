@@ -1,42 +1,53 @@
 <main>
   <section class="availability-form">
     <div class="heading">
-      <h1>Хижа Мазалат</h1>
+      <h1>{{hutName}}</h1>
       <h3>Детайли за резервация:</h3>
     </div>
-    <form #reservationForm="ngForm" (ngSubmit)="reservationHandler(reservationForm.value)">
-      <div class="inputs">
-        <div class="form-group">
-          <label for="checkin-date">Дата на пристигане</label>
-          <input #checkinDateInput="ngModel" type="date" name="checkinDate" id="checkin-date" ngModel={{reservationDetails?.checkinDate}}>
+    <form [formGroup]="form" (ngSubmit)="submitHandler()">
+      <fieldset [disabled]="false">
+        <div class="inputs">
+          <div class="form-group">
+            <label for="checkin-date">Дата на пристигане</label>
+            <input type="date" name="checkinDate" id="checkin-date" formControlName="checkinDate">
+          </div>
+          <div class="form-group">
+            <label for="checkout-date">Дата на напускане</label>
+            <input type="date" name="checkoutDate" id="checkout-date" formControlName="checkoutDate">
+          </div>
+          <div class="form-group">
+            <label for="people-count">Брой хора</label>
+            <input type="number" name="peopleCount" id="people-count" formControlName="peopleCount">
+          </div>
+          <div class="form-group">
+            <label for="phone">Телефон</label>
+            <div class="tel-container">
+              <select name="select-tel" id="select-tel" class="tel">
+                <option value="00359">+359</option>
+              </select>
+              <input type="text" name="phone" id="phone" formControlName="phone">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="names">Име Фамилия</label>
+            <input type="text" name="names" id="names" formControlName="names">
+          </div>
+          <div class="form-group">
+            <label for="email">E-mail</label>
+            <input type="email" id="email" name="email" formControlName="email">
+          </div>
         </div>
-        <div class="form-group">
-          <label for="checkout-date">Дата на напускане</label>
-          <input #checkoutDateInput="ngModel" type="date" name="checkoutDate" id="checkout-date" ngModel={{reservationDetails?.checkoutDate}}>
-        </div>
-        <div class="form-group">
-          <label for="people-count">Брой хора</label>
-          <input #peopleCount="ngModel" type="number" name="peopleCount" id="people-count" ngModel="{{reservationDetails?.peopleCount}}">
-        </div>
-        <div class="form-group">
-          <label for="phone">Телефон</label>
-          <input #phone="ngModel" type="text" name="phone" id="phone" ngModel="{{currentUser?.tel}}">
-        </div>
-        <div class="form-group">
-          <label for="first-name">Име Фамилия</label>
-          <input #firstName="ngModel" type="text" name="firstName" id="first-name" ngModel="{{currentUser?.names}}">
-        </div>
-        <div class="form-group">
-          <label for="email">E-mail</label>
-          <input #email="ngModel" type="email" id="email" name="email" ngModel="{{currentUser?.email}}">
-        </div>
-      </div>
+      </fieldset>
       <div class="buttons">
         <div class="small-buttons">
-          <button type="button" class="small-btn" routerLink="/huts/{{reservationDetails?.hutId}}/check">ПРОМЕНИ ДАТИТЕ/БРОЯ</button>
-          <button type="button" class="small-btn" href="#">ПРОМЕНИ ДАННИТЕ В ПРОФИЛА</button>
+          <button type="button" class="small-btn" routerLink="/huts/{{reservationDetails?.hutId}}/check">
+            ПРОМЕНИ ДАТИТЕ/БРОЯ
+          </button>
+          <button type="button" class="small-btn" routerLink="/user/profile">
+            ПРОМЕНИ ДАННИТЕ В ПРОФИЛА
+          </button>
         </div>
-        <button type="submit">ПОТВЪРДИ РЕЗЕРВАЦИЯ</button>
+        <button>ПОТВЪРДИ РЕЗЕРВАЦИЯ</button>
       </div>
     </form>
   </section>

@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import {UserService} from '../user.service';
 import {IUser} from '../shared/user.model';
 import {Observable} from 'rxjs';
@@ -11,7 +11,7 @@ import {Observable} from 'rxjs';
 export class ProfileComponent implements OnInit {
 
   inEditMode = false;
-  currentUser: IUser;
+  userDetails: IUser;
 
   constructor(private userService: UserService) {
   }
@@ -19,7 +19,7 @@ export class ProfileComponent implements OnInit {
   ngOnInit(): void {
     this.userService.getCurrentUserProfile().subscribe(
       userDetails => {
-        this.currentUser = userDetails;
+        this.userDetails = userDetails;
       }
     );
   }
@@ -30,13 +30,14 @@ export class ProfileComponent implements OnInit {
 
   submitHandler(data: any): void {
     this.userService.updateProfile(data).subscribe({
-      next: () => {
+      next: (userDetails) => {
+        this.userDetails = userDetails;
         this.inEditMode = false;
+        console.log('submitHandler:' + data);
       },
       error: (err) => {
         console.error(err);
       }
     });
   }
-
 }

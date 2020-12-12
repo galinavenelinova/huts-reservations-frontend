@@ -1,81 +1,83 @@
-<form [formGroup]="form" class="register" (ngSubmit)="submitHandler()">
-  <fieldset>
-    <h2>Регистрация</h2>
-    <!-- username -->
-    <p class="field field-icon">
-      <label for="username"><span><i class="fas fa-user"></i></span></label>
-      <input [class.input-error]="form.get('username').touched && !!form.get('username').errors" type="text"
-             name="username" id="username" placeholder="Johny" formControlName="username">
-    </p>
-    <p *ngIf="form.get('username').touched && form.get('username').errors?.required" class="error">
-      Полето "потребителско име" е задължително!
-    </p>
-    <p *ngIf="form.get('username').touched && form.get('username').errors?.minlength" class="error">
-      Потребителското име трябва да е поне 5 символа!
-    </p>
-    <!-- email -->
-    <p class="field field-icon">
-      <label for="email"><span><i class="fas fa-envelope"></i></span></label>
-      <input [class.input-error]="form.get('email').touched && !!form.get('email').errors" type="email" name="email"
-             id="email" placeholder="john.doe@gmail.com" formControlName="email">
-    </p>
-    <p *ngIf="form.get('email').touched && form.get('email').errors?.required" class="error">
-      Полето "email" е задължително!
-    </p>
-    <p *ngIf="form.get('email').touched && form.get('email').errors?.emailValidator" class="error">
-      Въведеният email е невалиден!
-    </p>
-    <!-- firstName, lastName -->
-    <p class="field field-icon">
-      <label for="tel"><span><i class="fas fa-file-signature"></i></span></label>
-      <input type="text" name="names" id="names" placeholder="Иван Иванов" formControlName="names">
-    </p>
-    <p *ngIf="form.get('names').touched && form.get('names').errors?.required" class="error">
-      Полето "Име и фамилия" е задължително!
-    </p>
-    <!-- telephone -->
-    <p class="field field-icon">
-      <label for="tel"><span><i class="fas fa-phone"></i></span></label>
-      <select name="select-tel" id="select-tel" class="tel">
-        <option value="00359">+359</option>
-      </select>
-      <input type="text" name="tel" id="tel" placeholder="885 888 888" formControlName="tel">
-    </p>
-    <p *ngIf="form.get('tel').touched && form.get('tel').errors?.required" class="error">
-      Полето "телефон" е задължително!
-    </p>
-    <!-- password -->
-    <p class="field field-icon">
-      <label for="password"><span><i class="fas fa-lock"></i></span></label>
-      <input [class.input-error]="form.get('password').touched && !!form.get('password').errors" type="password"
-             name="password" id="password" placeholder="******" formControlName="password">
-    </p>
-    <p *ngIf="form.get('password').touched && form.get('password').errors?.required" class="error">
-      Полето "парола" е задължително!
-    </p>
-    <p *ngIf="form.get('password').touched && form.get('password').errors?.minlength" class="error">
-      Паролата трябва да е поне 4 символа!
-    </p>
-    <!-- rePassword -->
-    <p class="field field-icon">
-      <label for="rePassword"><span><i class="fas fa-lock"></i></span></label>
-      <input [class.input-error]="form.get('rePassword').touched && !!form.get('rePassword').errors" type="password"
-             name="rePassword" id="rePassword" placeholder="******" formControlName="rePassword">
-    </p>
-    <p *ngIf="form.get('rePassword').touched && form.get('rePassword').errors?.required" class="error">
-      Полето "Повторете парола" е задължително!
-    </p>
-    <p *ngIf="form.get('rePassword').touched && form.get('rePassword').errors?.rePasswordValidator" class="error">
-      "парола" и "повторете парола" не съвпадат!
-    </p>
-    <button [disabled]="isLoading || form.invalid">РЕГИСТРАЦИЯ</button>
-    <p *ngIf="!userRegisteredSuccessful" class="error">
-      Неуспешна регистрация, моля променете данните и опитайте пак!
-    </p>
-    <app-loader [isLoading]="isLoading"></app-loader>
-    <p class="text-center">
-      Имаш акаунт?
-      <a routerLink="/user/login">Вход</a>
-    </p>
-  </fieldset>
-</form>
+<main>
+  <form [formGroup]="form" class="register" (ngSubmit)="submitHandler()">
+    <fieldset>
+      <h2>Регистрация</h2>
+      <!-- username -->
+      <p class="field field-icon">
+        <label for="username"><span><i class="fas fa-user"></i></span></label>
+        <input [class.input-error]="form.get('username').touched && !!form.get('username').errors" type="text"
+               name="username" id="username" placeholder="ivanivanov" formControlName="username">
+      </p>
+      <p *ngIf="form.get('username').touched && form.get('username').errors?.required" class="error">
+        Полето "потребителско име" е задължително!
+      </p>
+      <p *ngIf="form.get('username').touched && form.get('username').errors?.minlength" class="error">
+        Потребителското име трябва да е поне 5 символа!
+      </p>
+      <!-- email -->
+      <p class="field field-icon">
+        <label for="email"><span><i class="fas fa-envelope"></i></span></label>
+        <input [class.input-error]="form.get('email').touched && !!form.get('email').errors" type="email" name="email"
+               id="email" placeholder="ivan.ivanov@gmail.com" formControlName="email">
+      </p>
+      <p *ngIf="form.get('email').touched && form.get('email').errors?.required" class="error">
+        Полето "email" е задължително!
+      </p>
+      <p *ngIf="form.get('email').touched && form.get('email').errors?.emailValidator" class="error">
+        Въведеният email е невалиден!
+      </p>
+      <!-- firstName, lastName -->
+      <p class="field field-icon">
+        <label for="tel"><span><i class="fas fa-file-signature"></i></span></label>
+        <input type="text" name="names" id="names" placeholder="Иван Иванов" formControlName="names">
+      </p>
+      <p *ngIf="form.get('names').touched && form.get('names').errors?.required" class="error">
+        Полето "Име и фамилия" е задължително!
+      </p>
+      <!-- telephone -->
+      <p class="field field-icon">
+        <label for="tel"><span><i class="fas fa-phone"></i></span></label>
+        <select name="select-tel" id="select-tel" class="tel">
+          <option value="00359">+359</option>
+        </select>
+        <input type="text" name="tel" id="tel" placeholder="885 888 888" formControlName="tel">
+      </p>
+      <p *ngIf="form.get('tel').touched && form.get('tel').errors?.required" class="error">
+        Полето "телефон" е задължително!
+      </p>
+      <!-- password -->
+      <p class="field field-icon">
+        <label for="password"><span><i class="fas fa-lock"></i></span></label>
+        <input [class.input-error]="form.get('password').touched && !!form.get('password').errors" type="password"
+               name="password" id="password" placeholder="******" formControlName="password">
+      </p>
+      <p *ngIf="form.get('password').touched && form.get('password').errors?.required" class="error">
+        Полето "парола" е задължително!
+      </p>
+      <p *ngIf="form.get('password').touched && form.get('password').errors?.minlength" class="error">
+        Паролата трябва да е поне 4 символа!
+      </p>
+      <!-- rePassword -->
+      <p class="field field-icon">
+        <label for="rePassword"><span><i class="fas fa-lock"></i></span></label>
+        <input [class.input-error]="form.get('rePassword').touched && !!form.get('rePassword').errors" type="password"
+               name="rePassword" id="rePassword" placeholder="******" formControlName="rePassword">
+      </p>
+      <p *ngIf="form.get('rePassword').touched && form.get('rePassword').errors?.required" class="error">
+        Полето "Повторете парола" е задължително!
+      </p>
+      <p *ngIf="form.get('rePassword').touched && form.get('rePassword').errors?.rePasswordValidator" class="error">
+        "парола" и "повторете парола" не съвпадат!
+      </p>
+      <button [disabled]="isLoading || form.invalid">РЕГИСТРАЦИЯ</button>
+      <p *ngIf="!userRegisteredSuccessful" class="error">
+        Неуспешна регистрация, моля променете данните и опитайте пак!
+      </p>
+      <app-loader [isLoading]="isLoading"></app-loader>
+      <p class="text-center">
+        Имаш акаунт?
+        <a routerLink="/user/login">Вход</a>
+      </p>
+    </fieldset>
+  </form>
+</main>

@@ -13,10 +13,10 @@ import { SubmitOnValidDirective } from './dir.directive';
   imports: [
     CommonModule
   ],
-  exports: [
-    LoaderComponent,
-    EmailValidatorDirective,
-    SubmitOnValidDirective
-  ]
+    exports: [
+        LoaderComponent,
+        EmailValidatorDirective,
+        SubmitOnValidDirective
+    ]
 })
 export class SharedModule { }

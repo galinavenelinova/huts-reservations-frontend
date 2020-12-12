@@ -1,15 +1,26 @@
-import { AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms';
+import {AbstractControl, ValidationErrors, ValidatorFn} from '@angular/forms';
 
 export function emailValidator(control: AbstractControl): ValidationErrors | null {
   const value = (control.value as string);
-  if (!value) { return null; }
+  if (!value) {
+    return null;
+  }
   const isValidEmail = /^[a-zA-Z0-9\.-_]+@\w+\.\w+$/.test(value);
-  return isValidEmail ? null : { emailValidator: true };
+  return isValidEmail ? null : {emailValidator: true};
 }
 
 export function rePasswordValidatorFactory(targetControl: AbstractControl): ValidatorFn {
   return function rePasswordValidator(control: AbstractControl): ValidationErrors | null {
     const areTheSame = targetControl.value === control.value;
-    return areTheSame ? null : { rePasswordValidator: true };
+    return areTheSame ? null : {rePasswordValidator: true};
   };
 }
+
+export function datesValidatorFactory(targetControl: AbstractControl): ValidatorFn {
+  return function datesValidator(control: AbstractControl): ValidationErrors | null {
+    const areValid = targetControl.value < control.value;
+    console.log(targetControl.value + ' ; ' + control.value + ' ; ' + areValid);
+    return areValid ? null : {datesValidator: true};
+  };
+}
+

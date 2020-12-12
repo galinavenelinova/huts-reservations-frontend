@@ -36,6 +36,15 @@ label {
   padding-bottom: 10px;
 }
 
+fieldset {
+  outline: none;
+  border: none;
+}
+
+.tel-container {
+  display: flex;
+}
+
 button {
   font-size: 16px;
   font-weight: 900;

@@ -99,3 +99,8 @@ button {
   padding: 4px 30px;
   border-radius: 15px;
 }
+
+.error {
+  color: red;
+  font-weight: bold;
+}

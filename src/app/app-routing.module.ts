@@ -32,7 +32,7 @@ const routes: Routes = [{
         }
       },
       {
-        path: 'reservation',
+        path: 'huts/:id/reservation',
         component: ReservationComponent,
         data: {
           isLogged: true

@@ -17,7 +17,6 @@ export class UserService {
   constructor(private http: HttpClient) { }
 
   getCurrentUserProfile(): Observable<any> {
-    console.log('getCurrentUserProfile: ' + this.isLogged);
     return this.http.get(`${apiUrl}/users/profile`, { withCredentials: true, headers: {'Content-Type': 'application/json'}}, )
       .pipe(
       tap(user => console.log(user)),
@@ -32,7 +31,6 @@ export class UserService {
   }
 
   register(data: any): Observable<any> {
-    console.log(data);
     return this.http.post(`${apiUrl}/users/register`, data, { withCredentials: true }).pipe(
       tap((user: IUser) => this.currentUser = user)
     );
@@ -45,8 +43,8 @@ export class UserService {
   }
 
   updateProfile(data: any): Observable<IUser> {
-    return this.http.put(`${apiUrl}/users/profile`, data, { withCredentials: true }).pipe(
-      tap((user: IUser) => this.currentUser = user)
+    return this.http.post(`${apiUrl}/users/profile`, data, { withCredentials: true }).pipe(
+      tap((user: IUser) => { this.currentUser = user; })
     );
   }
 }

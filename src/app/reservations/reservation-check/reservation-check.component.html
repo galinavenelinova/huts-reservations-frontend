@@ -1,29 +1,35 @@
 <main>
   <section class="availability-form">
     <div class="img-wrapper">
-      <h1>Хижа Мазалат</h1>
+      <h1>{{hutName}}</h1>
       <img src="/assets/images/huts/{{hutId}}.jpg">
     </div>
-    <form #reservationCheckForm="ngForm" (ngSubmit)="reservationCheckHandler(reservationCheckForm.value)">
+    <form [formGroup]="form" (ngSubmit)="submitHandler()">
       <div class="form-group">
         <label for="checkin-date">Дата на пристигане</label>
-        <input #checkinDateInput="ngModel" type="date" name="checkinDate" id="checkin-date" ngModel required>
+        <input type="date" name="checkinDate" id="checkin-date" formControlName="checkinDate">
       </div>
       <div class="form-group">
         <label for="checkout-date">Дата на напускане</label>
-        <input #checkoutDateInput="ngModel" type="date" name="checkoutDate" id="checkout-date" ngModel required>
+        <input type="date" name="checkoutDate" id="checkout-date" formControlName="checkoutDate">
       </div>
       <div class="form-group">
         <label for="people-count">Брой хора</label>
-        <input #peopleCountInput="ngModel" type="number" name="peopleCount" value="1" step="1" min="1" id="people-count" [ngModel]="1">
+        <input type="number" name="peopleCount" value="1" step="1" min="1" id="people-count" formControlName="peopleCount">
       </div>
-      <button [disabled]="reservationCheckForm.invalid">ПРОВЕРИ НАЛИЧНОСТ</button>
+      <button [disabled]="form.invalid">ПРОВЕРИ НАЛИЧНОСТ</button>
     </form>
+    <p *ngIf="form.get('checkinDate').touched && form.get('checkoutDate').touched && form.get('checkoutDate').errors?.datesValidator" class="error">
+      Датата на напускане трябва да е по-късна от датата на пристигане!
+    </p>
+    <p *ngIf="form.get('peopleCount').errors?.min" class="error">
+      Броя хора трябва да е минимум 1!
+    </p>
     <article class="message" *ngIf="isAvailable !== undefined && isAvailable">
       <div class="message-yes">
         Има свободни места за {{reservationCheck.checkinDate}} - {{reservationCheck.checkoutDate}}/{{reservationCheck.peopleCount}} човека. Продължавате ли към резервация?
       </div>
-      <button class="message-btn" routerLink="/reservation">ДА</button>
+      <button class="message-btn" routerLink="/huts/{{hutId}}/reservation">ДА</button>
     </article>
     <article class="message" *ngIf="isAvailable !== undefined && !isAvailable">
       <div class="message-no">

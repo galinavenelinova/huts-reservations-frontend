@@ -1,19 +1,19 @@
 <ng-template #defaultMode>
   <div class="flex">
     <p>Потребителско име: </p>
-    <p>{{currentUser?.username}}</p>
+    <p>{{userDetails?.username}}</p>
   </div>
   <div class="flex">
     <p>Email: </p>
-    <p>{{currentUser?.email}}</p>
+    <p>{{userDetails?.email}}</p>
   </div>
   <div class="flex">
     <p>Име Фамилия: </p>
-    <p>{{currentUser?.names}}</p>
+    <p>{{userDetails?.names}}</p>
   </div>
   <div class="flex">
     <p>Телефон: </p>
-    <p>+359 {{currentUser?.tel}}</p>
+    <p>+359 {{userDetails?.tel}}</p>
   </div>
   <button class="edit-button" (click)="toggleEditMode()">Редактирай</button>
 </ng-template>
@@ -22,15 +22,15 @@
   <form #f="ngForm" (ngSubmit)="submitHandler(f.value)">
     <div class="flex">
       <p>Потребителско име: </p>
-      <input type="text" name="username" id="username" [ngModel]="currentUser?.username">
+      <input type="text" name="username" id="username" [ngModel]="userDetails?.username">
     </div>
     <div class="flex">
       <p>Email: </p>
-      <input type="email" name="email" id="email" [ngModel]="currentUser?.email">
+      <input type="email" name="email" id="email" [ngModel]="userDetails?.email">
     </div>
     <div class="flex">
       <p>Име Фамилия: </p>
-      <input type="text" name="names" id="names" [ngModel]="currentUser?.names">
+      <input type="text" name="names" id="names" [ngModel]="userDetails?.names">
     </div>
     <div class="flex">
       <p>Телефон: </p>
@@ -38,7 +38,7 @@
         <select name="select-tel" id="select-tel" class="tel">
           <option value="00359">+359</option>
         </select>
-        <input type="text" name="tel" id="tel" value="885 888 888" [ngModel]="currentUser?.tel">
+        <input type="text" name="tel" id="tel" value="885 888 888" [ngModel]="userDetails?.tel">
       </div>
     </div>
     <button type="button" class="red-button" (click)="toggleEditMode()">Откажи</button>
@@ -46,8 +46,11 @@
   </form>
 </ng-template>
 
-<div class="profile">
-  <img src="/assets/images/profile.png" alt="default user">
-  <h3>Профилна информация:</h3>
-  <ng-container *ngTemplateOutlet="inEditMode ? editMode : defaultMode"></ng-container>
-</div>
+<main>
+  <div class="profile">
+    <img src="/assets/images/profile.png" alt="default user">
+    <h3>Профилна информация:</h3>
+    <ng-container *ngTemplateOutlet="inEditMode ? editMode : defaultMode"></ng-container>
+  </div>
+</main>
+
