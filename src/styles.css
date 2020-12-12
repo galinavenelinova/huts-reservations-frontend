@@ -7,9 +7,9 @@ app-root * {
 body {
   margin: 0;
   padding: 0;
+  background-color: #F4F6F3;
 }
 
 main {
   margin: 50px 0;
-  background-color: #F4F6F3;
 }

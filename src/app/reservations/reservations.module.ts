@@ -6,11 +6,12 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { ReservationComponent } from './reservation/reservation.component';
 import {RouterModule} from '@angular/router';
 import {SharedModule} from '../shared/shared.module';
+import { ReservationsListComponent } from './reservations-list/reservations-list.component';
 
 
 
 @NgModule({
-  declarations: [ReservationCheckComponent, ReservationComponent],
+  declarations: [ReservationCheckComponent, ReservationComponent, ReservationsListComponent],
   imports: [
     CommonModule,
     FormsModule,
@@ -23,7 +24,8 @@ import {SharedModule} from '../shared/shared.module';
   ],
   exports: [
     ReservationCheckComponent,
-    ReservationComponent
+    ReservationComponent,
+    ReservationsListComponent
   ]
 })
 export class ReservationsModule { }

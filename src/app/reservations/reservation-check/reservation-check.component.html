@@ -22,6 +22,12 @@
     <p *ngIf="form.get('checkinDate').touched && form.get('checkoutDate').touched && form.get('checkoutDate').errors?.datesValidator" class="error">
       Датата на напускане трябва да е по-късна от датата на пристигане!
     </p>
+    <p *ngIf="form.get('checkinDate').touched && form.get('checkinDate').errors?.dateLaterCurrentValidator" class="error">
+      Невалидна дата на пристигане (по-ранна от днешна дата)!
+    </p>
+    <p *ngIf="form.get('checkoutDate').touched && form.get('checkoutDate').errors?.dateLaterCurrentValidator" class="error">
+      Невалидна дата на напускане (по-ранна от днешна дата)!
+    </p>
     <p *ngIf="form.get('peopleCount').errors?.min" class="error">
       Броя хора трябва да е минимум 1!
     </p>

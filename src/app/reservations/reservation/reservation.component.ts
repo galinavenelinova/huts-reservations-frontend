@@ -68,7 +68,7 @@ export class ReservationComponent implements OnInit {
     this.reservationService.save(this.reservation, this.hutId).subscribe(
       reservation => {
         console.log(reservation);
-        this.router.navigate(['/']);
+        this.router.navigate(['/user/reservation']);
       });
   }
 }

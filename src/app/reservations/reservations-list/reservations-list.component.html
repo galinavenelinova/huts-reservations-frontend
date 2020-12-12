@@ -1,0 +1,18 @@
+<main>
+  <section class="list-item" >
+    <table>
+      <tr>
+        <th>Хижа</th>
+        <th>Дата на пристигане</th>
+        <th>Дата на напускане</th>
+        <th>Брой хора</th>
+      </tr>
+      <tr *ngFor="let reservation of reservations">
+        <td>{{reservation.hutName}}</td>
+        <td>{{reservation.checkinDate}}</td>
+        <td>{{reservation.checkoutDate}}</td>
+        <td>{{reservation.peopleCount}}</td>
+      </tr>
+    </table>
+  </section>
+</main>

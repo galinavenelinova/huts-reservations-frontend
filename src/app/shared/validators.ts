@@ -24,3 +24,11 @@ export function datesValidatorFactory(targetControl: AbstractControl): Validator
   };
 }
 
+export function dateLaterCurrentValidator(control: AbstractControl): ValidationErrors | null {
+  const currentDate = new Date();
+  const controlDate = new Date(control.value);
+  const isValid = controlDate > currentDate || controlDate.toDateString() === currentDate.toDateString();
+  console.log('control.value: ' + control.value + '; isValid: ' + isValid);
+  return isValid ? null : {dateLaterCurrentValidator: true};
+}
+

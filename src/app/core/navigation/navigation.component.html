@@ -3,9 +3,10 @@
     <img src="/assets/images/100NTO_logo.jpg" alt="logo" routerLink="/">
   </section>
   <section class="right">
+    <button *ngIf="isLogged" routerLink="/user/reservation" class="left-from-icon">Моите резервации</button>
     <i class="fas fa-user"></i>
-    <button *ngIf="!isLogged" routerLink="/user/login">Вход</button>
-    <button *ngIf="isLogged" routerLink="/user/profile">Профил</button>
-    <button *ngIf="isLogged" (click)="logoutHandler()">Изход</button>
+    <button *ngIf="!isLogged" routerLink="/user/login" class="right-from-icon">Вход</button>
+    <button *ngIf="isLogged" routerLink="/user/profile" class="right-from-icon">Профил</button>
+    <button *ngIf="isLogged" (click)="logoutHandler()" class="right-from-icon">Изход</button>
   </section>
 </nav>

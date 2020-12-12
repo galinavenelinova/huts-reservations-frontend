@@ -6,6 +6,7 @@ import {HutDetailComponent} from './huts/hut-detail/hut-detail.component';
 import {ReservationCheckComponent} from './reservations/reservation-check/reservation-check.component';
 import {ReservationComponent} from './reservations/reservation/reservation.component';
 import {AuthGuard} from './core/guards/auth.guard';
+import {ReservationsListComponent} from './reservations/reservations-list/reservations-list.component';
 
 const routes: Routes = [{
     path: '',
@@ -34,6 +35,13 @@ const routes: Routes = [{
       {
         path: 'huts/:id/reservation',
         component: ReservationComponent,
+        data: {
+          isLogged: true
+        }
+      },
+      {
+        path: 'user/reservation',
+        component: ReservationsListComponent,
         data: {
           isLogged: true
         }

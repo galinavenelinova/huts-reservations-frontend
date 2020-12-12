@@ -1,10 +1,11 @@
-import {Component, OnChanges, OnInit, Output, ViewChild} from '@angular/core';
-import {ActivatedRoute, Router} from '@angular/router';
-import {FormBuilder, FormGroup, NgForm, Validators} from '@angular/forms';
+import {Component, OnInit} from '@angular/core';
+import {ActivatedRoute} from '@angular/router';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {ReservationService} from '../shared/reservation.service';
 import {IReservationCheck} from '../shared/reservation-check.model';
-import {datesValidatorFactory, emailValidator, rePasswordValidatorFactory} from '../../shared/validators';
+import {dateLaterCurrentValidator, datesValidatorFactory} from '../../shared/validators';
 import {HutService} from '../../huts/shared/hut.service';
+import {UserService} from '../../user/user.service';
 
 @Component({
   selector: 'app-reservation-check',
@@ -30,10 +31,10 @@ export class ReservationCheckComponent implements OnInit {
     private route: ActivatedRoute,
     private reservationService: ReservationService,
     private hutService: HutService) {
-    const dateControl = this.fb.control('', [Validators.required]);
+    const dateControl = this.fb.control('', [Validators.required, dateLaterCurrentValidator]);
     this.form = this.fb.group({
       checkinDate: dateControl,
-      checkoutDate: ['', [Validators.required, datesValidatorFactory(dateControl)]],
+      checkoutDate: ['', [Validators.required, datesValidatorFactory(dateControl), dateLaterCurrentValidator]],
       peopleCount: ['', [Validators.required, Validators.min(1)]]
     });
     this.form.get('peopleCount').setValue('1');
