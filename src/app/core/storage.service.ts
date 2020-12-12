@@ -9,6 +9,7 @@ interface IStorage {
 export class StorageService implements IStorage {
   setItem<T>(key, item): T { return item; }
   getItem<T>(key): T { return null; }
+  removeItem<T>(key): void {}
 }
 
 export function storageFactory(platformId: string): any {
@@ -47,6 +48,10 @@ export class BrowserStorage {
       item = tmp;
     }
     return item;
+  }
+
+  removeItem<T>(key): void {
+    this.localStorage.removeItem(key);
   }
 }
 

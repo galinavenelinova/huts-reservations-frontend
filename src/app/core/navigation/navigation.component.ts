@@ -9,6 +9,7 @@ import {Router} from '@angular/router';
 })
 export class NavigationComponent implements OnInit {
   get isLogged(): boolean {
+    console.log('userService: ' + this.userService.isLogged);
     return this.userService.isLogged;
   }
 

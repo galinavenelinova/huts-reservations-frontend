@@ -24,6 +24,7 @@ export class AuthGuard implements CanActivateChild {
     return stream$.pipe(
       map((user) => {
         const isLoggedFromData = childRoute.data.isLogged;
+        console.log('this.userService.isLogged' + this.userService.isLogged);
         return typeof isLoggedFromData !== 'boolean' || isLoggedFromData === this.userService.isLogged;
       }),
       tap((canContinue) => {

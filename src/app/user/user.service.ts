@@ -19,7 +19,7 @@ export class UserService {
   getCurrentUserProfile(): Observable<any> {
     return this.http.get(`${apiUrl}/users/profile`, { withCredentials: true, headers: {'Content-Type': 'application/json'}}, )
       .pipe(
-      tap(user => console.log(user)),
+      tap((user: IUser) => this.currentUser = user),
       catchError(() => { this.currentUser = null; return of(null); })
     );
   }
