@@ -23,7 +23,6 @@ export class ReservationService {
   }
 
   save(reservation: IReservation, hutId: string): Observable<any> {
-    console.log('post request sent' + hutId);
     return this.http.post(`${apiUrl}/huts/${hutId}/reservation`, reservation, { withCredentials: true }).pipe(
       tap((reservationResult: IReservation) => this.reservationDetails = reservationResult)
     );

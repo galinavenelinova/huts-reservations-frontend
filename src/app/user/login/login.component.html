@@ -3,33 +3,36 @@
     <fieldset>
       <h2>Влез в твоя профил</h2>
       <p class="field field-icon">
-        <label for="email"><span><i class="fas fa-envelope"></i></span></label>
-        <input #userEmail="ngModel" [class.input-error]="userEmail.touched && !!userEmail.errors" type="text" name="email"
-               id="email" placeholder="ivan.ivanov@gmail.com" ngModel required appEmailValidator>
-      </p>
-      <p *ngIf="userEmail.touched && userEmail.errors?.required" class="error">
-        Полето "email" е задължително!
-      </p>
-      <p *ngIf="userEmail.touched && userEmail.errors?.emailValidator" class="error">
-        Въведеният email е невалиден!
-      </p>
-      <p class="field field-icon">
-        <label for="password"><span><i class="fas fa-lock"></i></span></label>
-        <input #userPassword="ngModel" [class.input-error]="userPassword.touched && !!userPassword.errors" type="password"
-               name="password" id="password" placeholder="******" ngModel required minlength="4">
-      </p>
-      <p *ngIf="userPassword.touched && userPassword.errors?.required" class="error">
-        Полето "парола" е задължително!
-      </p>
-      <p *ngIf="userPassword.touched && userPassword.errors?.minlength" class="error">
-        Паролата трябва да е минимум 4 символа!
-      </p>
-      <button [disabled]="isLoading || f.invalid">ВХОД</button>
-      <app-loader [isLoading]="isLoading"></app-loader>
-      <p class="text-center">
-        Нямаш акаунт?
-        <a routerLink="/user/register">Регистрация</a>
-      </p>
-    </fieldset>
-  </form>
-</main>
+<!--        <label for="email"><span><i class="fas fa-envelope"></i></span></label>-->
+<!--        <input #userEmail="ngModel" [class.input-error]="userEmail.touched && !!userEmail.errors" type="text" name="email"-->
+<!--               id="email" placeholder="ivan.ivanov@gmail.com" ngModel required appEmailValidator>-->
+        <label for="username"><span><i class="fas fa-envelope"></i></span></label>
+        <input #username="ngModel" [class.input-error]="username.touched && !!username.errors" type="text" name="username"
+        id="username" placeholder="ivanivanov" ngModel required minlength="6">
+              </p>
+              <p *ngIf="username.touched && username.errors?.required" class="error">
+                Полето "потребителско име" е задължително!
+              </p>
+              <p *ngIf="username.touched && username.errors?.minlength" class="error">
+                Потребителското име трябва да е минимум 6 символа!
+              </p>
+              <p class="field field-icon">
+                <label for="password"><span><i class="fas fa-lock"></i></span></label>
+                <input #userPassword="ngModel" [class.input-error]="userPassword.touched && !!userPassword.errors" type="password"
+                       name="password" id="password" placeholder="******" ngModel required minlength="5">
+              </p>
+              <p *ngIf="userPassword.touched && userPassword.errors?.required" class="error">
+                Полето "парола" е задължително!
+              </p>
+              <p *ngIf="userPassword.touched && userPassword.errors?.minlength" class="error">
+                Паролата трябва да е минимум 5 символа!
+              </p>
+              <button [disabled]="isLoading || f.invalid">ВХОД</button>
+              <app-loader [isLoading]="isLoading"></app-loader>
+              <p class="text-center">
+                Нямаш акаунт?
+                <a routerLink="/user/register">Регистрация</a>
+              </p>
+            </fieldset>
+          </form>
+        </main>

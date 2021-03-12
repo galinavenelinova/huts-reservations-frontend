@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { UserService } from '../user.service';
+import {Component, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
+import {UserService} from '../user.service';
 
 @Component({
   selector: 'app-login',
@@ -14,7 +14,8 @@ export class LoginComponent implements OnInit {
   constructor(
     private userService: UserService,
     private router: Router
-  ) { }
+  ) {
+  }
 
   ngOnInit(): void {
   }
@@ -23,13 +24,15 @@ export class LoginComponent implements OnInit {
     this.isLoading = true;
     this.errorMessage = '';
     this.userService.login(formValue).subscribe({
-      next: (data) => {
+      next: (res) => {
         this.isLoading = false;
+        console.log('Success!');
         this.router.navigate(['/']);
       },
       error: (err) => {
         this.errorMessage = 'ERROR!';
         this.isLoading = false;
+        console.log('Error!');
       }
     });
   }
