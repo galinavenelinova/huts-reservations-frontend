@@ -6,4 +6,5 @@ export interface IUser {
   tel: string;
   names: string;
   reservations: IReservation[];
+  role: string;
 }

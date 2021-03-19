@@ -1,0 +1,19 @@
+<main>
+  <section class="list-item" >
+    <table>
+      <tr>
+        <th>Номер</th>
+        <th>Потребителско име</th>
+        <th>Роля</th>
+        <th>Действие</th>
+      </tr>
+      <tr *ngFor="let user of usersList; let i=index">
+        <td>{{i + 1}}</td>
+        <td>{{user.username}}</td>
+        <td>{{user.role}}</td>
+        <td><button *ngIf="user.role === 'USER'" routerLink="/user/{{user.username}}/change-role">Промени ролята на ADMIN</button></td>
+      </tr>
+    </table>
+  </section>
+</main>
+

@@ -3,6 +3,7 @@ import { AuthGuard } from '../core/guards/auth.guard';
 import { LoginComponent } from './login/login.component';
 import { ProfileComponent } from './profile/profile.component';
 import { RegisterComponent } from './register/register.component';
+import { UsersListComponent } from './users-list/users-list.component';
 
 const routes: Routes = [
   {
@@ -29,6 +30,13 @@ const routes: Routes = [
       {
         path: 'profile',
         component: ProfileComponent,
+        data: {
+          isLogged: true
+        }
+      },
+      {
+        path: 'list',
+        component: UsersListComponent,
         data: {
           isLogged: true
         }

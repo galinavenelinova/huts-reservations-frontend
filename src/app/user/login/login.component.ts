@@ -24,15 +24,15 @@ export class LoginComponent implements OnInit {
     this.isLoading = true;
     this.errorMessage = '';
     this.userService.login(formValue).subscribe({
-      next: (res) => {
+      next: response => {
         this.isLoading = false;
-        console.log('Success!');
+        console.log('response: ' + response.headers.get('Authorization'));
         this.router.navigate(['/']);
       },
       error: (err) => {
         this.errorMessage = 'ERROR!';
         this.isLoading = false;
-        console.log('Error!');
+        console.log(err);
       }
     });
   }

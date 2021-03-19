@@ -9,8 +9,11 @@ import {Router} from '@angular/router';
 })
 export class NavigationComponent implements OnInit {
   get isLogged(): boolean {
-    console.log('userService: ' + this.userService.isLogged);
+    // console.log('userService: ' + this.userService.isLogged);
     return this.userService.isLogged;
+  }
+  get isAdmin(): boolean {
+    return this.userService.currentUser?.role === 'ADMIN';
   }
 
   constructor(private userService: UserService, private router: Router) { }

@@ -5,6 +5,7 @@ import { FooterComponent } from './footer/footer.component';
 import {RouterModule} from '@angular/router';
 import {storageServiceProvider} from './storage.service';
 import {AuthGuard} from './guards/auth.guard';
+import {appInterceptorProvider} from './interceptors/app.interceptor';
 
 @NgModule({
   declarations: [NavigationComponent, FooterComponent],
@@ -14,7 +15,8 @@ import {AuthGuard} from './guards/auth.guard';
   ],
   providers: [
     storageServiceProvider,
-    AuthGuard
+    AuthGuard,
+    appInterceptorProvider
   ],
   exports: [
     NavigationComponent,
