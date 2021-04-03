@@ -19,7 +19,6 @@ export function rePasswordValidatorFactory(targetControl: AbstractControl): Vali
 export function datesValidatorFactory(targetControl: AbstractControl): ValidatorFn {
   return function datesValidator(control: AbstractControl): ValidationErrors | null {
     const areValid = targetControl.value < control.value;
-    console.log(targetControl.value + ' ; ' + control.value + ' ; ' + areValid);
     return areValid ? null : {datesValidator: true};
   };
 }
@@ -28,7 +27,6 @@ export function dateLaterCurrentValidator(control: AbstractControl): ValidationE
   const currentDate = new Date();
   const controlDate = new Date(control.value);
   const isValid = controlDate > currentDate || controlDate.toDateString() === currentDate.toDateString();
-  console.log('control.value: ' + control.value + '; isValid: ' + isValid);
   return isValid ? null : {dateLaterCurrentValidator: true};
 }
 

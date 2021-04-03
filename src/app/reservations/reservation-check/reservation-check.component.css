@@ -93,6 +93,7 @@ button {
 .message-no {
   font-weight: bold;
   color: red;
+  font-size: 12pt;
 }
 
 .message-btn {

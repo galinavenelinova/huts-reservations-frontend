@@ -39,7 +39,9 @@
     </article>
     <article class="message" *ngIf="isAvailable !== undefined && !isAvailable">
       <div class="message-no">
-        За съжаление няма свободни места за {{reservationCheck.checkinDate}} - {{reservationCheck.checkoutDate}}/{{reservationCheck.peopleCount}} човека. Моля променете датите/броя хора и опитайте пак.
+        За съжаление няма свободни места за {{reservationCheck.checkinDate}} - {{reservationCheck.checkoutDate}}/{{reservationCheck.peopleCount}} човека.
+        <br/>
+        Моля променете датите и/или броя хора и опитайте пак.
       </div>
     </article>
   </section>
