@@ -6,13 +6,22 @@
         <th>Дата на пристигане</th>
         <th>Дата на напускане</th>
         <th>Брой хора</th>
+        <th></th>
       </tr>
       <tr *ngFor="let reservation of reservations">
         <td>{{reservation.hutName}}</td>
-        <td>{{reservation.checkinDate}}</td>
-        <td>{{reservation.checkoutDate}}</td>
-        <td>{{reservation.peopleCount}}</td>
+        <td class="text-center">{{reservation.checkinDate | date: 'dd.MM.yyyy'}}</td>
+        <td class="text-center">{{reservation.checkoutDate | date: 'dd.MM.yyyy'}}</td>
+        <td class="text-center">{{reservation.peopleCount}}</td>
+        <td class="text-center">
+          <button (click)="deleteReservation(reservation.id)" *ngIf="!outdatedReservationList && isDateAfterCurrentDate(reservation.checkinDate)">Изтрий</button>
+        </td>
       </tr>
     </table>
   </section>
+  <br>
+  <div class="btn-center">
+    <button *ngIf="!outdatedReservationList" (click)="loadOutdatedReservations()">Изтекли резервации</button>
+    <button *ngIf="outdatedReservationList" (click)="ngOnInit()">Актуални резервации</button>
+  </div>
 </main>

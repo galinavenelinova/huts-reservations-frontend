@@ -20,7 +20,7 @@ export class ReservationComponent implements OnInit {
   paramsProperty = 'id';
   reservationDetails: any;
   userDetails: IUser;
-  reservation: IReservation = {checkinDate: undefined, checkoutDate: undefined, peopleCount: 0, user: null};
+  reservation: IReservation = {id: undefined, checkinDate: undefined, checkoutDate: undefined, peopleCount: 0, user: null};
 
   constructor(
     private fb: FormBuilder,
@@ -47,7 +47,6 @@ export class ReservationComponent implements OnInit {
     this.userService.getCurrentUserProfile().subscribe(
       userDetails => {
         this.userDetails = userDetails;
-        console.log('userService loaded userDetails');
         this.form.get('phone').setValue(this.userDetails.tel);
         this.form.get('names').setValue(this.userDetails.names);
         this.form.get('email').setValue(this.userDetails.email);

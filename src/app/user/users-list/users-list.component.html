@@ -11,7 +11,7 @@
         <td>{{i + 1}}</td>
         <td>{{user.username}}</td>
         <td>{{user.role}}</td>
-        <td><button *ngIf="user.role === 'USER'" routerLink="/user/{{user.username}}/change-role">Промени ролята на ADMIN</button></td>
+        <td><button *ngIf="user.role === 'USER'" (click)="makeUserAdmin(user.username)">Промени ролята на ADMIN</button></td>
       </tr>
     </table>
   </section>

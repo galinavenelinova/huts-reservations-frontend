@@ -29,6 +29,14 @@ export class ReservationService {
   }
 
   loadReservationsForUser(userId: string): Observable<any> {
-    return this.http.get(`${apiUrl}/reservation/${userId}`, { withCredentials: true, headers: {'Content-Type': 'application/json' }});
+    return this.http.get(`${apiUrl}/reservation/${userId}`);
+  }
+
+  loadOutdatedReservationsForUser(userId: string): Observable<any> {
+    return this.http.get(`${apiUrl}/reservation-outdated/${userId}`);
+  }
+
+  deleteReservation(reservationId: string): Observable<any> {
+    return this.http.post(`${apiUrl}/reservation/delete`, reservationId);
   }
 }

@@ -75,4 +75,8 @@ export class UserService {
   getUsersList(): Observable<any> {
     return this.http.get(`${apiUrl}/users/list`);
   }
+
+  makeUserAdmin(username: string): Observable<any> {
+    return this.http.post(`${apiUrl}/users/change-role`, username);
+  }
 }

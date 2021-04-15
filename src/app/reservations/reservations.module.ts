@@ -7,11 +7,12 @@ import { ReservationComponent } from './reservation/reservation.component';
 import {RouterModule} from '@angular/router';
 import {SharedModule} from '../shared/shared.module';
 import { ReservationsListComponent } from './reservations-list/reservations-list.component';
+import { ReservationEditComponent } from './reservation-edit/reservation-edit.component';
 
 
 
 @NgModule({
-  declarations: [ReservationCheckComponent, ReservationComponent, ReservationsListComponent],
+  declarations: [ReservationCheckComponent, ReservationComponent, ReservationsListComponent, ReservationEditComponent],
   imports: [
     CommonModule,
     FormsModule,

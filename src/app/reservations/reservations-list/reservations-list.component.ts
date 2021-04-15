@@ -3,21 +3,6 @@ import {IReservation} from '../shared/reservation.model';
 import {ReservationService} from '../shared/reservation.service';
 import {UserService} from '../../user/user.service';
 
-export const reservations = [
-  {
-    checkinDate: '21.12.2020',
-    checkoutDate: '23.12.2020',
-    peopleCount: 3,
-    hutName: 'Хижа Мазалат'
-  },
-  {
-    checkinDate: '28.12.2020',
-    checkoutDate: '30.12.2020',
-    peopleCount: 5,
-    hutName: 'Хижа Партизанска песен'
-  },
-];
-
 @Component({
   selector: 'app-reservations-list',
   templateUrl: './reservations-list.component.html',
@@ -25,6 +10,7 @@ export const reservations = [
 })
 export class ReservationsListComponent implements OnInit {
   reservations: IReservation[];
+  outdatedReservationList = false;
 
   constructor(
     private reservationService: ReservationService,
@@ -33,16 +19,45 @@ export class ReservationsListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // this.reservations = reservations;
     let userId = null;
     this.userService.getCurrentUserProfile().subscribe(
       user => {
         userId = user.id;
         this.reservationService.loadReservationsForUser(userId).subscribe(
-          reservationList => this.reservations = reservationList
+          reservationList => {
+            this.reservations = reservationList;
+            this.outdatedReservationList = false;
+            this.reservations.sort((a, b) => (a.checkinDate > b.checkinDate) ? 1 : -1);
+          }
         );
       }
     );
   }
 
+  deleteReservation(reservationId: string): void {
+    if (confirm('Моля потвърдете, че желаете да изтриете посочената резервация.')) {
+      this.reservationService.deleteReservation(reservationId).subscribe(
+        () => this.ngOnInit()
+      );
+    }
+  }
+
+  loadOutdatedReservations(): void {
+    this.userService.getCurrentUserProfile().subscribe(
+      user => {
+        this.reservationService.loadOutdatedReservationsForUser(user.id).subscribe(
+          reservationList => {
+            this.reservations = reservationList;
+            this.outdatedReservationList = true;
+            this.reservations.sort((a, b) => (a.checkinDate > b.checkinDate) ? 1 : -1);
+          }
+        );
+      }
+    );
+  }
+
+  isDateAfterCurrentDate(checkinDate: Date): boolean {
+    const currentDate = new Date();
+    return new Date(checkinDate).getTime() > currentDate.getTime();
+  }
 }
