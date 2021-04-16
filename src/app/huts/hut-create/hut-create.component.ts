@@ -1,10 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {emailValidator, rePasswordValidatorFactory} from '../../shared/validators';
 import {MountainService} from '../../home/shared/mountain.service';
 import {IMountain} from '../../home/shared/mountain.model';
-import {Cloudinary} from '@cloudinary/angular-5.x';
-import {ImageUploadComponent} from '../../shared/image-upload/image-upload.component';
+import {HutService} from '../shared/hut.service';
+import {IHut} from '../shared/hut.model';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-hut-create',
@@ -13,20 +13,26 @@ import {ImageUploadComponent} from '../../shared/image-upload/image-upload.compo
 })
 export class HutCreateComponent implements OnInit {
   form: FormGroup;
+  hut: IHut;
   isLoading = false;
+  isHutCreated = false;
   mountains: IMountain[];
+  imagePreview: string;
+  file: File;
 
   constructor(
     private fb: FormBuilder,
     private mountainService: MountainService,
-    // private imageUploadComponent: ImageUploadComponent
+    private hutService: HutService,
+    private router: Router,
   ) {
     this.form = this.fb.group({
-      mountainName: ['', [Validators.required]],
+      mountain: ['', [Validators.required]],
       name: ['', [Validators.required]],
+      bedCapacity: ['', [Validators.required, Validators.min(1)]],
       shortInfo: ['', [Validators.required]],
       longInfo: ['', [Validators.required]],
-      image: ['', [Validators.required]]
+      image: [null]
     });
     mountainService.loadMountainsList().subscribe(
       mountains => this.mountains = mountains
@@ -37,6 +43,24 @@ export class HutCreateComponent implements OnInit {
   }
 
   submitHandler(): void {
-    console.log(this.form.value);
+    this.hutService.createHut(this.form.value, this.form.get('mountain').value.id).subscribe(
+      (hut) => {
+        this.isHutCreated = true;
+        this.hut = hut;
+      }
+    );
+  }
+
+  onSelect($event: Event): void {
+    this.file = ($event.target as HTMLInputElement).files[0];
+    this.form.patchValue({image: this.file});
+    this.form.get('image').updateValueAndValidity();
+    const formData: FormData = new FormData();
+    formData.append('file', this.file);
+    this.hutService.uploadImage(formData, this.hut.id).subscribe(
+      () => {
+        this.router.navigate([`${this.hut.mountain.id}/huts`]);
+      }
+    );
   }
 }

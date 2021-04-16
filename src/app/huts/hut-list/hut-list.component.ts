@@ -22,6 +22,7 @@ export class HutListComponent implements OnInit {
     });
     this.hutService.loadHutList(this.mountainId).subscribe(hutList => {
       this.hutList = hutList;
+      this.hutList.sort((a, b) => a.name.localeCompare(b.name, 'bg'));
       this.mountainName = this.hutList[0].mountain.name;
     });
   }

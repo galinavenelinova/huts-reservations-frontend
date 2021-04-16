@@ -7,7 +7,9 @@
         <img src="assets/images/huts/{{hut.id}}.jpg">
       </div>
       <p class="hut-description">{{hut.shortInfo}}</p>
+      <br>
       <p class="hut-description">{{hut.longInfo}}</p>
+      <br>
       <!--      <ul>-->
       <!--        Съседни туристически обекти:-->
       <!--        <li>х.Узана - 3.30ч.</li>-->
@@ -21,11 +23,12 @@
       <!--        <li>с.Стоките - м.Лъгът - 3.00ч.</li>-->
       <!--        <li>с.Скобелево - 4.30ч.</li>-->
       <!--      </ol>-->
-      <!--      <table>-->
-      <!--        <tr>-->
-      <!--          <td>Спални места</td>-->
-      <!--          <td>64</td>-->
-      <!--        </tr>-->
+      <table>
+        <tr>
+          <td>Спални места</td>
+          <td>{{hut.bedCapacity}}</td>
+        </tr>
+      </table>
       <!--        <tr>-->
       <!--          <td>Телефон</td>-->
       <!--          <td>024910020</td>-->

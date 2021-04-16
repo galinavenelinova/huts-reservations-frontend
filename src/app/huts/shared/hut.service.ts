@@ -18,4 +18,12 @@ export class HutService {
   getHutById(hutId: string): Observable<IHut> {
     return this.http.get<IHut>(`${apiUrl}/huts/${hutId}`);
   }
+
+  createHut(value: any, mountainId: string): Observable<any> {
+    return this.http.post(`${apiUrl}/huts/create?mountainId=${mountainId}`, value);
+  }
+
+  uploadImage(value: any, hutId: string): Observable<any> {
+    return this.http.post(`${apiUrl}/huts/${hutId}/image-upload`, value);
+  }
 }
