@@ -1,0 +1,86 @@
+<!--<main>-->
+<!--&lt;!&ndash;  <form [formGroup]="form" class="register" (ngSubmit)="submitHandler()">&ndash;&gt;-->
+<!--&lt;!&ndash;    <fieldset>&ndash;&gt;-->
+<!--&lt;!&ndash;      <h2>Добави хижа</h2>&ndash;&gt;-->
+<!--&lt;!&ndash;      &lt;!&ndash; name &ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;      <p class="field field-icon">&ndash;&gt;-->
+<!--&lt;!&ndash;        <label for="mountainName"><span>Име на хижата</span></label>&ndash;&gt;-->
+<!--&lt;!&ndash;        <select name="mountainName" id="mountainName" placeholder="хижа Рилски езера" formControlName="mountainName">&ndash;&gt;-->
+<!--&lt;!&ndash;          <option value="" disabled>Избери планина</option>&ndash;&gt;-->
+<!--&lt;!&ndash;          <option *ngFor="let mountain of mountains" [ngValue]="mountain">{{mountain.name}}</option>&ndash;&gt;-->
+<!--&lt;!&ndash;        </select>&ndash;&gt;-->
+<!--&lt;!&ndash;      </p>&ndash;&gt;-->
+<!--&lt;!&ndash;      &lt;!&ndash; name &ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;      <p class="field field-icon">&ndash;&gt;-->
+<!--&lt;!&ndash;        <label for="name"><span>Име на хижата</span></label>&ndash;&gt;-->
+<!--&lt;!&ndash;        <input type="text" name="name" id="name" placeholder="хижа Рилски езера" formControlName="name">&ndash;&gt;-->
+<!--&lt;!&ndash;      </p>&ndash;&gt;-->
+<!--&lt;!&ndash;      &lt;!&ndash; shortInfo &ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;      <p class="field field-icon">&ndash;&gt;-->
+<!--&lt;!&ndash;        <label for="shortInfo"><span>Кратка информация за хижата</span></label>&ndash;&gt;-->
+<!--&lt;!&ndash;        <input type="text" name="shortInfo" id="shortInfo" placeholder="Кратка информация за хижа Рилски езера..."&ndash;&gt;-->
+<!--&lt;!&ndash;               formControlName="shortInfo">&ndash;&gt;-->
+<!--&lt;!&ndash;      </p>&ndash;&gt;-->
+<!--&lt;!&ndash;      &lt;!&ndash; longInfo &ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;      <p class="field field-icon">&ndash;&gt;-->
+<!--&lt;!&ndash;        <label for="longInfo"><span>Разширена информация за хижата</span></label>&ndash;&gt;-->
+<!--&lt;!&ndash;        <input type="text" name="longInfo" id="longInfo" placeholder="Разширена информация за хижа Рилски езера..."&ndash;&gt;-->
+<!--&lt;!&ndash;               formControlName="longInfo">&ndash;&gt;-->
+<!--&lt;!&ndash;      </p>&ndash;&gt;-->
+<!--&lt;!&ndash;      &lt;!&ndash; longInfo &ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;      <p class="field field-icon">&ndash;&gt;-->
+<!--&lt;!&ndash;        <label for="image"><span>Снимка на хижата</span></label>&ndash;&gt;-->
+<!--&lt;!&ndash;        <input type="file" name="image" id="image" placeholder="Разширена информация за хижа Рилски езера..."&ndash;&gt;-->
+<!--&lt;!&ndash;               formControlName="image">&ndash;&gt;-->
+<!--&lt;!&ndash;      </p>&ndash;&gt;-->
+<!--&lt;!&ndash;      <button [disabled]="isLoading || form.invalid">ДОБАВИ</button>&ndash;&gt;-->
+<!--&lt;!&ndash;      <app-loader [isLoading]="isLoading"></app-loader>&ndash;&gt;-->
+<!--&lt;!&ndash;    </fieldset>&ndash;&gt;-->
+<!--&lt;!&ndash;  </form>&ndash;&gt;-->
+<!--  <div id="direct_upload" ng2FileDrop [uploader]="uploader" (fileOver)="fileOverBase($event)" [ngClass]="{'nv-file-over': hasBaseDropZoneOver}">-->
+<!--    <h1>New Photo</h1>-->
+<!--    <h2>Direct upload from the browser with Angular File Upload</h2>-->
+<!--    <p>You can also drag and drop an image file into the dashed area.</p>-->
+<!--    <form>-->
+<!--      <div class="form_line">-->
+<!--        <label path="title">Title:</label>-->
+<!--        <div class="form_controls">-->
+<!--          <input type="text" class="form-control" #title placeholder="Title" (keyup.enter)="updateTitle(title.value)" (blur)="updateTitle(title.value)"-->
+<!--          />-->
+<!--        </div>-->
+<!--      </div>-->
+<!--      <div class="form_line">-->
+<!--        <label>Image:</label>-->
+<!--        <div class="form_controls">-->
+<!--          <div class="upload_button_holder">-->
+<!--            <label class="upload_button" for="fileupload">Upload</label>-->
+<!--            &lt;!&ndash; onChange hanlder resets the input value to get the change event when uploading the same file consecutively &ndash;&gt;-->
+<!--            <input type="file" id="fileupload" #fileInput ng2FileSelect [style.display]="'none'" [uploader]="uploader" (change)="fileInput.value=''"-->
+<!--                   multiple />-->
+<!--          </div>-->
+
+<!--        </div>-->
+<!--      </div>-->
+<!--    </form>-->
+<!--    <h2>Status</h2>-->
+<!--    <div class="file" *ngFor="let response of responses">-->
+<!--      <h3>{{response.file.name}}</h3>-->
+<!--      <div class="status">-->
+<!--        Uploading... {{response.progress}}%-->
+<!--        <div *ngIf="!response.status">In progress</div>-->
+<!--        <div class="status-code" *ngIf="response.status">Upload completed with status code {{response.status}}</div>-->
+<!--      </div>-->
+<!--      <div class="progress-bar">-->
+<!--        <div class="progress" role="progressbar" [style.width.%]="response.progress"></div>-->
+<!--      </div>-->
+<!--      <div class="form_line">-->
+<!--        <div class="form_controls">-->
+<!--          <div class="preview">-->
+<!--            &lt;!&ndash; Consider using https://github.com/valor-software/ng2-file-upload/issues/461 for image preview &ndash;&gt;-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+
+<!--  </div>-->
+<!--</main>-->

@@ -32,7 +32,7 @@ nav section {
 .right-from-icon,
 .left-from-icon {
   padding: 5px 20px;
-  margin-left: 20px;
+
   border-radius: 15px;
   outline: none;
   border:none;
@@ -45,11 +45,13 @@ nav section {
   margin-right: 20px;
   background: #7DB6AE;
   color: white;
+  margin-left: 5px;
 }
 
 .right-from-icon {
   background: #C2FCF3;
   color: #344B48;
+  margin-left: 20px;
 }
 
 .right button:hover {

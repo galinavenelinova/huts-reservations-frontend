@@ -4,6 +4,7 @@
   </section>
   <section class="right">
     <button *ngIf="isAdmin" routerLink="/user/list" class="left-from-icon yellow">Списък потребители</button>
+    <button *ngIf="isAdmin" routerLink="/add-hut" class="left-from-icon">Добави хижа</button>
     <button *ngIf="isLogged" routerLink="/user/reservation" class="left-from-icon">Моите резервации</button>
     <i class="fas fa-user"></i>
     <button *ngIf="!isLogged" routerLink="/user/login" class="right-from-icon">Вход</button>
