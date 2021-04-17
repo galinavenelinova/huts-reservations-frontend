@@ -1,10 +1,10 @@
 <main>
-  <form [formGroup]="form" class="register" (ngSubmit)="submitHandler()">
+  <form [formGroup]="form" class="hut-create" (ngSubmit)="submitHandler()">
     <fieldset>
       <h2>Добави хижа</h2>
       <!-- name -->
       <p *ngIf="!isHutCreated" class="field field-icon">
-        <label for="mountainName"><span>Име на хижата</span></label>
+        <label for="mountainName"><span>Планина</span></label>
         <select name="mountainName" id="mountainName" placeholder="хижа Рилски езера" formControlName="mountain">
           <option value="" disabled>Избери планина</option>
           <option *ngFor="let mountain of mountains" [ngValue]="mountain">{{mountain.name}}</option>
@@ -23,12 +23,12 @@
       <!-- shortInfo -->
       <p *ngIf="!isHutCreated" class="field field-icon">
         <label for="shortInfo"><span>Кратка информация за хижата</span></label>
-        <input type="text" name="shortInfo" id="shortInfo" placeholder="Кратка информация за хижа Рилски езера..." formControlName="shortInfo">
+        <input type="text" class="long-input" name="shortInfo" id="shortInfo" placeholder="Кратка информация за хижа Рилски езера..." formControlName="shortInfo">
       </p>
       <!-- longInfo -->
       <p *ngIf="!isHutCreated" class="field field-icon">
         <label for="longInfo"><span>Разширена информация за хижата</span></label>
-        <input type="text" name="longInfo" id="longInfo" placeholder="Разширена информация за хижа Рилски езера..." formControlName="longInfo">
+        <input type="text" class="long-input" name="longInfo" id="longInfo" placeholder="Разширена информация за хижа Рилски езера..." formControlName="longInfo">
       </p>
       <!-- image -->
       <p class="field field-icon" *ngIf="isHutCreated">
@@ -36,7 +36,9 @@
         <input type="file" (change)="onSelect($event)" name="image" id="image" accept="image/*">
         <button>КАЧИ СНИМКАТА</button>
       </p>
-      <button *ngIf="!isHutCreated" [disabled]="isLoading || !form.valid">ДОБАВИ</button>
+      <p class="button-wrapper">
+        <button *ngIf="!isHutCreated" [disabled]="isLoading || !form.valid">ДОБАВИ</button>
+      </p>
       <app-loader [isLoading]="isLoading"></app-loader>
     </fieldset>
   </form>
